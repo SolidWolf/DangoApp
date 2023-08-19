@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import androidx.navigation.NavController
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -38,10 +39,11 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun DangoAppTheme(
+fun MainScreen(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
+    navController: NavController,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
