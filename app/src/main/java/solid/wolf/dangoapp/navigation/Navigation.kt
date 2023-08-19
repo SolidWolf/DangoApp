@@ -3,6 +3,7 @@ package solid.wolf.dangoapp.navigation
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -26,21 +27,26 @@ fun Navigations(isLoading: Boolean) {
         startDestination = Screens.SplashScreen.route
     ){
         composable(
-            route = Screens.SplashScreen.route
+            route = Screens.SplashScreen.route,
+            enterTransition = { fadeIn() },
+            exitTransition = { fadeOut() }
         ){
-            if(!isLoading){
-                navController.navigate(Screens.HomeScreen.route)
-            }
-            AnimatedVisibility(
-                visible = isLoading,
-                exit = fadeOut(),
-                enter = fadeIn()
-            ) {
+
+//            AnimatedVisibility(
+//                visible = isLoading,
+//                exit = fadeOut(),
+//                enter = fadeIn()
+//            ) {
                 SplashScreen()
+                if(!isLoading){
+                    navController.navigate(Screens.HomeScreen.route)
+//                }
             }
         }
         composable(
-            route = Screens.HomeScreen.route
+            route = Screens.HomeScreen.route,
+            enterTransition = { fadeIn() },
+            exitTransition = { fadeOut() }
         ){
             MainScreen(navController = navController) {
                 Surface(
