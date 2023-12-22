@@ -22,11 +22,25 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import solid.wolf.dangoapp.MainViewModel
 import solid.wolf.dangoapp.R
+import solid.wolf.dangoapp.destinations.GreetingDestination
+import solid.wolf.dangoapp.navigation.Screens
 import solid.wolf.dangoapp.ui.theme.Spacing
 
+@Destination(start = true)
 @Composable
-fun SplashScreen(){
+fun SplashScreen(
+    navigator: DestinationsNavigator
+){
+    val mainViewModel:MainViewModel = viewModel()
+    mainViewModel.onStartingApplication()
+    if (!mainViewModel.isLoading.value) {
+        navigator.navigate(GreetingDestination("Handsome"))
+    }
     val infiniteTransition = rememberInfiniteTransition(label = "")
     val angle by infiniteTransition.animateFloat(
         initialValue = 0F,
