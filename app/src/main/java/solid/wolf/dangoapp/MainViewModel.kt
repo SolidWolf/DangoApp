@@ -6,21 +6,21 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
     var isLoading = mutableStateOf(true)
         private set
 
     var isBootingUp = mutableStateOf(true)
         private set
 
-    fun onBootingUp(){
+    fun onBootingUp() {
         viewModelScope.launch {
             delay(1000)
             isBootingUp.value = false
         }
     }
 
-    fun onStartingApplication(){
+    fun onStartingApplication() {
         viewModelScope.launch {
             delay(5000)
             isLoading.value = false

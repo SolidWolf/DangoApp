@@ -1,6 +1,5 @@
 package solid.wolf.dangoapp.splashscreen
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -28,15 +27,14 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import solid.wolf.dangoapp.MainViewModel
 import solid.wolf.dangoapp.R
 import solid.wolf.dangoapp.destinations.GreetingDestination
-import solid.wolf.dangoapp.navigation.Screens
 import solid.wolf.dangoapp.ui.theme.Spacing
 
 @Destination(start = true)
 @Composable
 fun SplashScreen(
     navigator: DestinationsNavigator
-){
-    val mainViewModel:MainViewModel = viewModel()
+) {
+    val mainViewModel: MainViewModel = viewModel()
     mainViewModel.onStartingApplication()
     if (!mainViewModel.isLoading.value) {
         navigator.navigate(GreetingDestination("Handsome"))
@@ -56,7 +54,7 @@ fun SplashScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.mainactivity_background)),
-    ){
+    ) {
         Image(
             painter = painterResource(id = R.drawable.chewie_logo),
             contentDescription = stringResource(id = R.string.cont_desc_chewie_logo),
