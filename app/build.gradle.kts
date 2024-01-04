@@ -35,12 +35,20 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "CLIENT_ID", "\"q7vsqiytb2yvq02f4v6kw3puclw6s4\"")
+//            buildConfigField("String", "TWITCH_REDIRECT", "\"https://solid.wolf.dangoapp/\"")
+            buildConfigField("String", "TWITCH_REDIRECT", "\"https://wedango/\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "CLIENT_ID", "\"q7vsqiytb2yvq02f4v6kw3puclw6s4\"")
+//            buildConfigField("String", "TWITCH_REDIRECT", "\"https://solid.wolf.dangoapp/\"")
+            buildConfigField("String", "TWITCH_REDIRECT", "\"https://wedango/\"")
         }
     }
     compileOptions {
@@ -52,6 +60,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.7"
@@ -86,4 +95,9 @@ dependencies {
 
     implementation("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.1.2-beta")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
+    implementation("androidx.browser:browser:1.7.0")
 }

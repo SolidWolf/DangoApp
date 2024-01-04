@@ -14,4 +14,15 @@ object Spacing {
     val spacing64: Dp = 64.dp
     val spacing128: Dp = 128.dp
     val spacing256: Dp = 256.dp
+
+    val weight10: Float = 0.1F
+    val weight20: Float = 0.2F
+    val weight30: Float = 0.3F
+    val weight40: Float = 0.4F
+    val weight50: Float = 0.5F
+    val weight60: Float = 0.6F
+    val weight70: Float = 0.7F
+    val weight80: Float = 0.8F
+    val weight90: Float = 0.9F
+    val weight100: Float = 1F
 }

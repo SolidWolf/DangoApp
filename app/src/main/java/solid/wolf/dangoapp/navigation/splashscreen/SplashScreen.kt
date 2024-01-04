@@ -1,4 +1,4 @@
-package solid.wolf.dangoapp.splashscreen
+package solid.wolf.dangoapp.navigation.splashscreen
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
@@ -27,6 +27,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import solid.wolf.dangoapp.MainViewModel
 import solid.wolf.dangoapp.R
 import solid.wolf.dangoapp.destinations.GreetingDestination
+import solid.wolf.dangoapp.destinations.LoginScreenDestination
 import solid.wolf.dangoapp.ui.theme.Spacing
 
 @Destination(start = true)
@@ -37,7 +38,7 @@ fun SplashScreen(
     val mainViewModel: MainViewModel = viewModel()
     mainViewModel.onStartingApplication()
     if (!mainViewModel.isLoading.value) {
-        navigator.navigate(GreetingDestination("Handsome"))
+        navigator.navigate(LoginScreenDestination())
     }
     val infiniteTransition = rememberInfiniteTransition(label = "")
     val angle by infiniteTransition.animateFloat(
