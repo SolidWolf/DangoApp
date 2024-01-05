@@ -19,23 +19,23 @@ import solid.wolf.dangoapp.ui.theme.Spacing
 @Destination
 @Composable
 fun LoginScreen(
-    navigator: DestinationsNavigator,
-    loginViewModel: LoginViewModel = viewModel()
+	navigator: DestinationsNavigator,
+	loginViewModel: LoginViewModel = viewModel()
 ) {
-    val context = LocalContext.current
+	val context = LocalContext.current
 
-    Column (
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Button(
-            shape = RoundedCornerShape(size = Spacing.spacing8),
-            onClick = {
-                startActivity(context,loginViewModel.createTwitchIntent(), null)
-            }
-        ) {
-            Text(text = "Log In")
-        }
-    }
+	Column(
+		modifier = Modifier.fillMaxSize(),
+		horizontalAlignment = Alignment.CenterHorizontally,
+		verticalArrangement = Arrangement.Center
+	) {
+		Button(
+			shape = RoundedCornerShape(size = Spacing.spacing8),
+			onClick = {
+				startActivity(context, loginViewModel.createTwitchIntent(), null)
+			}
+		) {
+			Text(text = "Log In")
+		}
+	}
 }

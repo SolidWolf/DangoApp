@@ -4,6 +4,9 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-android")
     id("com.google.devtools.ksp")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
 }
 
 kotlin {
@@ -16,7 +19,7 @@ kotlin {
         }
     }
 }
-
+apply("../ktlint.gradle")
 android {
     namespace = "solid.wolf.dangoapp"
     compileSdk = 34
@@ -33,6 +36,7 @@ android {
             useSupportLibrary = true
         }
     }
+
 
     buildTypes {
         debug {
@@ -52,11 +56,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_19
-        targetCompatibility = JavaVersion.VERSION_19
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "19"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -70,6 +74,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+kapt {
+    generateStubs = true
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -100,4 +109,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
     implementation("androidx.browser:browser:1.7.0")
+
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }

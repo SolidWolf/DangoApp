@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "********************************************************"
+echo "Running git pre-commit hook. Running Static Analysis... "
+echo "********************************************************"
+
+./gradlew ktlintCheck
+
+status=$?
+
+if [ "$status" = 0 ] ; then
+    echo "Static analysis found no problems."
+    exit 0
+else
+    echo "**********************************************************"
+    echo 1>&2 "Static analysis found violations it could not fix."
+    echo "**********************************************************"
+    exit 1
+fi

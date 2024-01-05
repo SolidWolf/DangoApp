@@ -26,46 +26,45 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import solid.wolf.dangoapp.MainViewModel
 import solid.wolf.dangoapp.R
-import solid.wolf.dangoapp.destinations.GreetingDestination
 import solid.wolf.dangoapp.destinations.LoginScreenDestination
 import solid.wolf.dangoapp.ui.theme.Spacing
 
 @Destination(start = true)
 @Composable
 fun SplashScreen(
-    navigator: DestinationsNavigator
+	navigator: DestinationsNavigator
 ) {
-    val mainViewModel: MainViewModel = viewModel()
-    mainViewModel.onStartingApplication()
-    if (!mainViewModel.isLoading.value) {
-        navigator.navigate(LoginScreenDestination())
-    }
-    val infiniteTransition = rememberInfiniteTransition(label = "")
-    val angle by infiniteTransition.animateFloat(
-        initialValue = 0F,
-        targetValue = 360F,
-        animationSpec = infiniteRepeatable(
-            animation = tween(2000, easing = LinearEasing)
-        ),
-        label = ""
-    )
+	val mainViewModel: MainViewModel = viewModel()
+	mainViewModel.onStartingApplication()
+	if (!mainViewModel.isLoading.value) {
+		navigator.navigate(LoginScreenDestination())
+	}
+	val infiniteTransition = rememberInfiniteTransition(label = "")
+	val angle by infiniteTransition.animateFloat(
+		initialValue = 0F,
+		targetValue = 360F,
+		animationSpec = infiniteRepeatable(
+			animation = tween(2000, easing = LinearEasing)
+		),
+		label = ""
+	)
 
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.mainactivity_background)),
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.chewie_logo),
-            contentDescription = stringResource(id = R.string.cont_desc_chewie_logo),
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(Spacing.spacing128)
-                .clip(RoundedCornerShape(Spacing.spacing64))
-                .graphicsLayer {
-                    this.rotationZ = angle
-                }
-        )
-    }
+	Box(
+		contentAlignment = Alignment.Center,
+		modifier = Modifier
+			.fillMaxSize()
+			.background(colorResource(id = R.color.mainactivity_background))
+	) {
+		Image(
+			painter = painterResource(id = R.drawable.chewie_logo),
+			contentDescription = stringResource(id = R.string.cont_desc_chewie_logo),
+			contentScale = ContentScale.Crop,
+			modifier = Modifier
+				.size(Spacing.spacing128)
+				.clip(RoundedCornerShape(Spacing.spacing64))
+				.graphicsLayer {
+					this.rotationZ = angle
+				}
+		)
+	}
 }

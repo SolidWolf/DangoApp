@@ -12,53 +12,53 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.utils.findDestination
+import dagger.hilt.android.AndroidEntryPoint
 import solid.wolf.dangoapp.ui.theme.AppTheme
 
+@AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            AppTheme {
-                /**
-                 * using this video to make navigation easier
-                 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
-                 */
-                /**
-                 * using this video to make navigation easier
-                 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
-                 */
-                NavGraphs.root.findDestination("greetings")?.let {
-                    DestinationsNavHost(
-                        navGraph = NavGraphs.root,
-                        startDestination = it
-                    )
-                }
-                
-            }
-        }
-    }
-    
-    override fun onResume() {
-        super.onResume()
-        val uri: Uri? = intent.data
-        Log.d("getLoginUrl: ", uri.toString())
-    }
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContent {
+			AppTheme {
+				/**
+				 * using this video to make navigation easier
+				 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
+				 */
+				/**
+				 * using this video to make navigation easier
+				 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
+				 */
+				NavGraphs.root.findDestination("greetings")?.let {
+					DestinationsNavHost(
+						navGraph = NavGraphs.root,
+						startDestination = it
+					)
+				}
+			}
+		}
+	}
+
+	override fun onResume() {
+		super.onResume()
+		val uri: Uri? = intent.data
+		Log.d("getLoginUrl: ", uri.toString())
+	}
 }
 
 @Destination(
-    route = "greetings"
+	route = "greetings"
 )
 @Composable
 fun Greeting() {
-    Box(
-        modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.tertiary)
-    ){
-        Text(
-            text = "Hello World!",
-        )
-    }
+	Box(
+		modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.tertiary)
+	) {
+		Text(
+			text = "Hello World!"
+		)
+	}
 }
