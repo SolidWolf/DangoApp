@@ -6,17 +6,17 @@ dependencies {
     ktlint "com.pinterest:ktlint:0.47.1"
 }
 
-task ktlintCheck(type: JavaExec, group: "verification") {
-    description = "Check Kotlin code style."
-    classpath = configurations.ktlint
-    getMainClass().set("com.pinterest.ktlint.Main")
-    args "src/**/*.kt", "--reporter=plain", "--reporter=html,output=${buildDir}/reports/ktlint-checkstyle-report.html"
+tasks.register('ktlintCheck', JavaExec) {
+	description = "Check Kotlin code style."
+	classpath = configurations.ktlint
+	getMainClass().set("com.pinterest.ktlint.Main")
+	args "src/**/*.kt", "--reporter=plain", "--reporter=html,output=${buildDir}/reports/ktlint-checkstyle-report.html"
 }
 
-task ktlintFormat(type: JavaExec, group: "formatting") {
-    description = "Fix Kotlin code style violations."
-    classpath = configurations.ktlint
-    getMainClass().set("com.pinterest.ktlint.Main")
-    jvmArgs "--add-opens=java.base/java.lang=ALL-UNNAMED"
-    args "-F", "src/**/*.kt"
+tasks.register('ktlintFormat', JavaExec) {
+	description = "Fix Kotlin code style violations."
+	classpath = configurations.ktlint
+	getMainClass().set("com.pinterest.ktlint.Main")
+	jvmArgs "--add-opens=java.base/java.lang=ALL-UNNAMED"
+	args "-F", "src/**/*.kt"
 }
