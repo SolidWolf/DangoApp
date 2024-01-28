@@ -6,8 +6,16 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.annotation.Destination
 import dagger.hilt.android.AndroidEntryPoint
 import solid.wolf.dangoapp.ui.theme.AppTheme
 
@@ -17,10 +25,13 @@ class MainActivity : ComponentActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		mainViewModel.onBootingUp()
+		if (mainViewModel.isBootingUp) {
+			mainViewModel.onBootingUp()
+			mainViewModel.onStartingApplication()
+		}
 		installSplashScreen().apply {
 			setKeepOnScreenCondition {
-				mainViewModel.isBootingUp.value
+				mainViewModel.isBootingUp
 			}
 		}
 		setContent {
@@ -38,20 +49,22 @@ class MainActivity : ComponentActivity() {
 		super.onResume()
 		val uri: Uri? = intent.data
 		Log.d("getLoginUrl: ", uri.toString())
+//		if(uri.toString().contains("access_token")){
+//			mainViewModel.getRefreshToken()
+//		}
 	}
 }
 
-// @Destination(
-//    route = "greetings",
-//    deepLinks = [
-//        DeepLink(
-//            uriPattern = "https://solid.wolf.dangoapp/#access_token={token}&scope={scope}&state={state}&token_type=bearer"
-//        )
-//    ]
-// )
-// @Composable
-// fun Greeting() {
-//    Text(
-//        text = "Hello World!",
-//    )
-// }
+@Destination(
+	route = "greetings"
+)
+@Composable
+fun Greeting() {
+	Box(
+		modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.primaryContainer)
+	) {
+		Text(
+			text = "Hello World!"
+		)
+	}
+}

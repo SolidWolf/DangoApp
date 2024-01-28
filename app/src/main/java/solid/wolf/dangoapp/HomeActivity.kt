@@ -49,16 +49,16 @@ class HomeActivity : ComponentActivity() {
 	}
 }
 
-@Destination(
-	route = "greetings"
-)
-@Composable
-fun Greeting() {
-	Box(
-		modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.tertiary)
-	) {
-		Text(
-			text = "Hello World!"
-		)
-	}
-}
+//@Destination(
+//	route = "greetings"
+//)
+//@Composable
+//fun Greeting() {
+//	Box(
+//		modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.tertiary)
+//	) {
+//		Text(
+//			text = "Hello World!"
+//		)
+//	}
+//}

@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import solid.wolf.dangoapp.core.domain.repository.WeDangoRepository
 import javax.inject.Singleton
 
 @Module
@@ -21,14 +22,14 @@ object AppModule {
 			.build()
 	}
 
-//    @Singleton
-//    @Provides
-//    fun provideRefreshTokenUseCase(
-//        repository: WeDangoRepository,
-//        retrofit: Retrofit
-//    ): TokenUseCases{
-//        return TokenUseCases(
-//            getRefreshTokenUseCase = GetRefreshTokenUseCase(repository = repository, retrofit = retrofit)
-//        )
-//    }
+    @Singleton
+    @Provides
+    fun provideRefreshTokenUseCase(
+		 repository: WeDangoRepository,
+		 retrofit: Retrofit
+    ): TokenUseCases{
+        return TokenUseCases(
+            getRefreshTokenUseCase = GetRefreshTokenUseCase(repository = repository, retrofit = retrofit)
+        )
+    }
 }

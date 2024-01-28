@@ -1,32 +1,44 @@
 package solid.wolf.dangoapp
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import solid.wolf.dangoapp.utils.UIState
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor() : ViewModel() {
-	var isLoading = mutableStateOf(true)
+class MainViewModel @Inject constructor(
+	private val 
+) : ViewModel() {
+	var isLoading by mutableStateOf(true)
 		private set
 
-	var isBootingUp = mutableStateOf(true)
+	var isBootingUp by mutableStateOf(true)
+		private set
+	
+	var loginState:UIState<String> by mutableStateOf(UIState.None)
 		private set
 
 	fun onBootingUp() {
 		viewModelScope.launch {
 			delay(1000)
-			isBootingUp.value = false
+			isBootingUp = false
 		}
 	}
 
 	fun onStartingApplication() {
 		viewModelScope.launch {
 			delay(5000)
-			isLoading.value = false
+			isLoading = false
 		}
+	}
+	
+	fun getRefreshToken(){
+		
 	}
 }

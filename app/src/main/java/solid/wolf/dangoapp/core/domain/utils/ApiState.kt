@@ -3,7 +3,7 @@ package solid.wolf.dangoapp.core.domain.utils
 import javax.annotation.concurrent.Immutable
 
 @Immutable
-sealed class ApiState<T> {
+sealed class ApiState<out T> {
 	@Immutable
 	data class Success<T>(val data: T) : ApiState<T>()
 
