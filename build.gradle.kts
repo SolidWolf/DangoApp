@@ -13,7 +13,7 @@ buildscript {
         set("compose_version", "1.5.7")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.2.0")
+        classpath("com.android.tools.build:gradle:8.2.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
     }
 }
