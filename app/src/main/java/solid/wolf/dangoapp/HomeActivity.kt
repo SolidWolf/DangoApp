@@ -5,18 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.DestinationsNavHost
-import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.utils.findDestination
 import dagger.hilt.android.AndroidEntryPoint
-import solid.wolf.dangoapp.ui.theme.AppTheme
+import solid.wolf.dangoapp.core.theme.AppTheme
 
 @AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
@@ -28,6 +20,15 @@ class HomeActivity : ComponentActivity() {
 				 * using this video to make navigation easier
 				 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
 				 */
+				/**
+				 * using this video to make navigation easier
+				 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
+				 */
+				/**
+				 * using this video to make navigation easier
+				 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
+				 */
+				
 				/**
 				 * using this video to make navigation easier
 				 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
@@ -49,16 +50,16 @@ class HomeActivity : ComponentActivity() {
 	}
 }
 
-//@Destination(
-//	route = "greetings"
-//)
-//@Composable
-//fun Greeting() {
-//	Box(
-//		modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.tertiary)
-//	) {
-//		Text(
-//			text = "Hello World!"
-//		)
-//	}
-//}
+// @Destination(
+// 	route = "greetings"
+// )
+// @Composable
+// fun Greeting() {
+// 	Box(
+// 		modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.tertiary)
+// 	) {
+// 		Text(
+// 			text = "Hello World!"
+// 		)
+// 	}
+// }

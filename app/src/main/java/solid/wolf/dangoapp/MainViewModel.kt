@@ -8,12 +8,13 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import solid.wolf.dangoapp.utils.UIState
+import solid.wolf.dangoapp.domain.usecase.tokens.TokenUseCase
+import solid.wolf.dangoapp.domain.utils.UIState
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-	private val 
+	private val tokenUseCase: TokenUseCase
 ) : ViewModel() {
 	var isLoading by mutableStateOf(true)
 		private set
@@ -21,7 +22,7 @@ class MainViewModel @Inject constructor(
 	var isBootingUp by mutableStateOf(true)
 		private set
 	
-	var loginState:UIState<String> by mutableStateOf(UIState.None)
+	var loginState: UIState<String> by mutableStateOf(UIState.None)
 		private set
 
 	fun onBootingUp() {
@@ -38,7 +39,6 @@ class MainViewModel @Inject constructor(
 		}
 	}
 	
-	fun getRefreshToken(){
-		
+	fun getRefreshToken() {
 	}
 }

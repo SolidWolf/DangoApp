@@ -17,7 +17,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import dagger.hilt.android.AndroidEntryPoint
-import solid.wolf.dangoapp.ui.theme.AppTheme
+import solid.wolf.dangoapp.core.theme.AppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -40,6 +40,10 @@ class MainActivity : ComponentActivity() {
 				 * using this video to make navigation easier
 				 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
 				 */
+				/**
+				 * using this video to make navigation easier
+				 * https://www.youtube.com/watch?v=Q3iZyW2etm4&ab_channel=PhilippLackner
+				 */
 				DestinationsNavHost(navGraph = NavGraphs.root)
 			}
 		}
@@ -49,9 +53,9 @@ class MainActivity : ComponentActivity() {
 		super.onResume()
 		val uri: Uri? = intent.data
 		Log.d("getLoginUrl: ", uri.toString())
-//		if(uri.toString().contains("access_token")){
-//			mainViewModel.getRefreshToken()
-//		}
+// 		if(uri.toString().contains("access_token")){
+// 			mainViewModel.getRefreshToken()
+// 		}
 	}
 }
 
